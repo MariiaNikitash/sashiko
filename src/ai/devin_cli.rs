@@ -56,6 +56,7 @@ pub fn build_devin_args(
 ) -> Vec<String> {
     let mut args = vec![
         "--print".to_string(),
+        "--sandbox".to_string(),
         "--prompt-file".to_string(),
         prompt_file.to_string(),
     ];
@@ -199,7 +200,10 @@ mod tests {
     #[test]
     fn test_build_args_minimal() {
         let args = build_devin_args("/tmp/p.txt", None, None, None);
-        assert_eq!(args, vec!["--print", "--prompt-file", "/tmp/p.txt",]);
+        assert_eq!(
+            args,
+            vec!["--print", "--sandbox", "--prompt-file", "/tmp/p.txt",]
+        );
     }
 
     #[test]
